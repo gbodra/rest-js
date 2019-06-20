@@ -1,12 +1,12 @@
 var express = require('express');
 var app = express();
 
-var redis = require("redis"),
-    client = redis.createClient();
+// var redis = require("redis"),
+//     client = redis.createClient();
 
-client.on("error", function (err) {
-    console.log("Error " + err);
-});
+// client.on("error", function (err) {
+//     console.log("Error " + err);
+// });
 
 function readFile() {
     var fs = require('fs');
@@ -28,18 +28,18 @@ app.get('/readfile', function (req, res) {
     res.send('File read!');
 });
 
-app.get('/redis', function (req, res) {
-    client.set("foo", "hello world", redis.print);
+// app.get('/redis', function (req, res) {
+//     client.set("foo", "hello world", redis.print);
 
-    res.send('Redis!');
-});
+//     res.send('Redis!');
+// });
 
-app.get('/storefile', function (req, res) {
-    var contents = readFile();
-    client.set("file", contents, redis.print);
+// app.get('/storefile', function (req, res) {
+//     var contents = readFile();
+//     client.set("file", contents, redis.print);
 
-    res.send('File stored in Redis!');
-});
+//     res.send('File stored in Redis!');
+// });
 
 app.get('/fibonacci', function (req, res) {
     var i, n = 10000, t1 = 0, t2 = 1, nextTerm;
